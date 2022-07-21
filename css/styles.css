@@ -20,7 +20,7 @@ body {
 
 .timer {
     position: absolute;
-    top: 32px;
+    top: 310px; left: 640px;
     font-size: 45px;
     color: #9BBB9B;
 }
