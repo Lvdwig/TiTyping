@@ -13,23 +13,23 @@ body {
 }
 
 .container {
-    width: 700px;
+    width: 900px;
     max-width: 90%;
     padding: 16px;
 }
 
 .timer {
     position: absolute;
-    top: 310px; left: 640px;
+    top: 290px; left: 625px;
     font-size: 45px;
     color: #9BBB9B;
 }
 
 #textToReply {
     margin-bottom: 16px;
-    margin-left: 15px;
-    font-size: 35px;
+    font-size: 25px;
     color: #9BBB9B;
+    width: 900px;
 }
 
 .inputWords {
@@ -41,8 +41,9 @@ body {
     height: 128px;
     margin: auto;
     resize: none;
-    padding: 8px 16px;
+    margin-top: 10px;
     font-size: 25px;
+    overflow: hidden;
     font-family: 'JetBrains Mono';
 }
 
