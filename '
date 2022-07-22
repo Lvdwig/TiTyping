@@ -31,7 +31,6 @@ wordsTyped.addEventListener('input', () => {
           document.getElementById("score").innerHTML = "Score 0"
       } else {
         document.getElementById("score").innerHTML = "Score " + counterScore
-          currentChar.classList.add("correct")
       }
       } else {
         counterScore -= 1
@@ -39,7 +38,6 @@ wordsTyped.addEventListener('input', () => {
           document.getElementById("score").innerHTML = "Score 0"
       } else {
           document.getElementById("score").innerHTML = "Score " + counterScore
-          currentChar.classList.add("incorrect")
       }
     }
 
@@ -53,7 +51,6 @@ document.addEventListener("keyup", function(event) {
         getRandomWords()
         counterScore = 0
         counterChar = 0
-        document.getElementById("score").innerHTML = "Score 0" 
     }
 });
 

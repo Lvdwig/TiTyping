@@ -18,9 +18,9 @@ body {
     padding: 16px;
 }
 
-.timer {
+#score {
     position: absolute;
-    top: 290px; left: 625px;
+    top: 330px; left: 535px;
     font-size: 45px;
     color: #9BBB9B;
 }
@@ -29,9 +29,10 @@ body {
     position: absolute;
     top: 400px; left: 535px;
     font-size: 25px;
-    padding: 1px;
-    color: rgba(155, 187, 155, 0.2);
+    padding: 2px;
+    color: rgba(155, 187, 155, 0.1);
     width: 900px;
+    text-align: justify;
 }
 
 .inputWords {
@@ -47,8 +48,19 @@ body {
     font-size: 25px;
     overflow: hidden;
     font-family: 'JetBrains Mono';
+    text-align: justify;
 }
 
 .inputWords:focus {
     border-color: #211C2B;
+}
+
+.correct {
+    font-size: 25px;
+    color: #00ff00;
+}
+
+.incorrect {
+  font-size: 25px;
+  color: #ff0000;
 }
