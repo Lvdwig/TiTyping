@@ -29,10 +29,15 @@ body {
     position: absolute;
     top: 400px; left: 535px;
     font-size: 25px;
+    background-color: #211C2B;
     padding: 2px;
     color: rgba(155, 187, 155, 0.1);
     width: 900px;
-    text-align: justify;
+    height: 120px;
+    border: none;
+    resize: none;
+    overflow: hidden;
+    font-family: 'JetBrains Mono';
 }
 
 .inputWords {
@@ -48,7 +53,6 @@ body {
     font-size: 25px;
     overflow: hidden;
     font-family: 'JetBrains Mono';
-    text-align: justify;
 }
 
 .inputWords:focus {
