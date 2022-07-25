@@ -10,43 +10,64 @@ var counterScore = 0
 
 // Get random words from the randomWords array
 function getRandomWords() {
-    const limitWords = 5
-    for (i = 0; i < limitWords; i++) {
-        var random = Math.floor(Math.random() * randomWords.length)
-        var wordPicked = randomWords[random]
-        wordstoType.innerHTML = wordPicked + " "
-      if (wordsTyped) {
-        console.log("hello")
+    const limitWords = 20
+    for (i = 1; i <= limitWords; i++) {
+      // Generate Random number
+      var random = Math.floor(Math.random() * randomWords.length)
+      // Pick a random word of the array
+      var wordPicked = randomWords[random]
+      // create a div to put the word
+      var word = document.createElement("div")
+      // Put a class to the div
+      word.classList.add("word")
+      // We put the words inside of the the div
+      wordstoType.appendChild(word)
+      for (l = 0; l < wordPicked.length; l++) {
+        // Create a element span to put the letters
+        var letter = document.createElement("span")
+        // Put class to the spans
+        letter.classList.add("letter")
+        // We put the letters inside the div of the words
+        word.appendChild(letter)
+        // We put the value of the letter into the span
+        letter.innerHTML = wordPicked[l]
       }
+      if (l < wordPicked -1) {
+        letter.innerHTML += " "
+        console.log("hello")
+      } 
     }
 }
 
 wordsTyped.addEventListener('input', () => {
-    var gettypedChar = wordsTyped.value
-    var lastCharTyped = gettypedChar.charAt(gettypedChar.length -1)
-    var getWords = wordstoType.value
-    var currentChar = getWords.charAt(counterChar)
-    if (lastCharTyped == currentChar) {
-        counterChar += 1
-        counterScore += 1
-        console.log(counterChar)
-      if (counterScore <= 0) {
-          document.getElementById("score").innerHTML = "Score 0"
-      } else {
-          document.getElementById("score").innerHTML = "Score " + counterScore
-      }
+  var gettypedChar = wordsTyped.innerHTML
+  var lastCharTyped = gettypedChar.charAt(gettypedChar.length -1)
+  var getWords = document.getElementsByClassName("letter").innerHTML
+  var currentChar = getWords.charAt(counterChar)
+  console.log("Last typed Char was: " + lastCharTyped)
+  console.log("Current char you have to type is: " + currentChar)
+  console.log("The value of the word to type is: " + getWords)
+  if (lastCharTyped == currentChar) {
+      counterChar += 1
+      counterScore += 1
+      console.log(counterChar)
+    if (counterScore <= 0) {
+        document.getElementById("score").innerHTML = "Score 0"
     } else {
-        counterScore -= 1
-      if (counterScore <= 0) {
-          document.getElementById("score").innerHTML = "Score 0"
-      } else {
-          document.getElementById("score").innerHTML = "Score " + counterScore
-          
-      }
+        document.getElementById("score").innerHTML = "Score " + counterScore
     }
+  } else {
+      counterScore -= 1
+    if (counterScore <= 0) {
+        document.getElementById("score").innerHTML = "Score 0"
+    } else {
+        document.getElementById("score").innerHTML = "Score " + counterScore
+        
+    }
+  }
   if (gettypedChar == getWords) {
     wordstoType.innerHTML = ""
-    wordsTyped.value = ""
+    wordsTyped.innerHTML = ""
     getRandomWords()
   }
 })
@@ -54,7 +75,7 @@ wordsTyped.addEventListener('input', () => {
 // When Tab is pressed, it empty the content of the textArea
 wordsTyped.addEventListener("keydown", function(event) {
     if (event.code === 'Tab') {
-        wordsTyped.value = ''
+        wordsTyped.innerHTML = ''
         wordstoType.innerHTML = ''
         event.preventDefault()
         getRandomWords()

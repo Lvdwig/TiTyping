@@ -25,12 +25,15 @@ body {
     color: #9BBB9B;
 }
 
+.word {
+    display: inline;
+}
+
 #textToReply {
     position: absolute;
     top: 400px; left: 535px;
     font-size: 25px;
     background-color: #211C2B;
-    padding: 2px;
     color: rgba(155, 187, 155, 0.1);
     width: 900px;
     height: 120px;
