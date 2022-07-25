@@ -32,21 +32,31 @@ function getRandomWords() {
         // We put the value of the letter into the span
         letter.innerHTML = wordPicked[l]
       }
-      if (l < wordPicked -1) {
-        letter.innerHTML += " "
-        console.log("hello")
-      } 
+      var space = document.createElement("span")
+      word.appendChild(space)
+      space.classList.add("letter")
+      space.innerHTML = " "
     }
 }
 
 wordsTyped.addEventListener('input', () => {
-  var gettypedChar = wordsTyped.innerHTML
-  var lastCharTyped = gettypedChar.charAt(gettypedChar.length -1)
-  var getWords = document.getElementsByClassName("letter").innerHTML
-  var currentChar = getWords.charAt(counterChar)
+  // Take the words that we typed
+  var gettyped = wordsTyped.innerHTML
+  // Take the last char we typed
+  var lastCharTyped = gettyped.charAt(gettyped.length -1)
+  // Take the char we have to type
+  var ancestor = document.getElementById("textToReply")
+  var descendents = ancestor.getElementsByClassName("letter")
+  var charTotype = descendents[i].innerHTML
+  if (lastCharTyped == charTotype[i]) {
+    console.log("Me tiran le tiro")
+  } else {
+    console.log("No le tiro")
+  }
   console.log("Last typed Char was: " + lastCharTyped)
-  console.log("Current char you have to type is: " + currentChar)
-  console.log("The value of the word to type is: " + getWords)
+  console.log("The char you have to type is: " + charTotype)
+
+  /*
   if (lastCharTyped == currentChar) {
       counterChar += 1
       counterScore += 1
@@ -70,8 +80,8 @@ wordsTyped.addEventListener('input', () => {
     wordsTyped.innerHTML = ""
     getRandomWords()
   }
+  */
 })
-
 // When Tab is pressed, it empty the content of the textArea
 wordsTyped.addEventListener("keydown", function(event) {
     if (event.code === 'Tab') {
