@@ -13,18 +13,10 @@ function getRandomWords() {
     const limitWords = 5
     for (i = 0; i < limitWords; i++) {
         var random = Math.floor(Math.random() * randomWords.length)
-        const wordPicked = randomWords[random]
-        var word = document.createElement("div")
-        wordstoType.appendChild(word)
-        for (var i = 0; i < wordPicked.length; i++) {
-          var letter = document.createElement("p")
-          letter.innerHTML = wordPicked[i]
-          console.log(letter.innerText)
-          word.appendChild(letter)
-          wordstoType.innerHTML = letter.innerText
-        }
-      if (i < limitWords -1) {
-        word.innerHTML += " "
+        var wordPicked = randomWords[random]
+        wordstoType.innerHTML = wordPicked + " "
+      if (wordsTyped) {
+        console.log("hello")
       }
     }
 }
@@ -37,6 +29,7 @@ wordsTyped.addEventListener('input', () => {
     if (lastCharTyped == currentChar) {
         counterChar += 1
         counterScore += 1
+        console.log(counterChar)
       if (counterScore <= 0) {
           document.getElementById("score").innerHTML = "Score 0"
       } else {
