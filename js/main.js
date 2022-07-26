@@ -2,7 +2,9 @@
 var randomWords = ["hello", "how", "first", "second", "keyboard", "lvdwig", 
 "futsal", "forward", "goalkeeper", "coding", "webpage", "css", "js",
 "town", "before", "after", "below", "under", "counter", "videogames",
-"mouse", "love", "cat", "dog", "friend", "brother", "family", "lights"]
+"mouse", "love", "cat", "dog", "friend", "brother", "family", "lights", "house",
+"pencil", "scream", "camera", "hand", "microphone", "helmet", "ball", "man",
+"soap", "swap", "bmw", "golf", "golf"]
 var wordstoType = document.getElementById('textToReply')
 var wordsTyped = document.getElementById("inputW")
 var counterChar = 0
@@ -47,40 +49,16 @@ wordsTyped.addEventListener('input', () => {
   // Take the char we have to type
   var ancestor = document.getElementById("textToReply")
   var descendents = ancestor.getElementsByClassName("letter")
-  var charTotype = descendents[i].innerHTML
-  if (lastCharTyped == charTotype[i]) {
-    console.log("Me tiran le tiro")
-  } else {
-    console.log("No le tiro")
+  for (var i = 0; i < descendents.length; i++) {
+    var charTotype = descendents[i].innerHTML
+    if (lastCharTyped == charTotype) {
+      console.log("Correct ")
+      counterChar ++
+    } else {
+      console.log("Incorrect ")
+    }
   }
-  console.log("Last typed Char was: " + lastCharTyped)
-  console.log("The char you have to type is: " + charTotype)
 
-  /*
-  if (lastCharTyped == currentChar) {
-      counterChar += 1
-      counterScore += 1
-      console.log(counterChar)
-    if (counterScore <= 0) {
-        document.getElementById("score").innerHTML = "Score 0"
-    } else {
-        document.getElementById("score").innerHTML = "Score " + counterScore
-    }
-  } else {
-      counterScore -= 1
-    if (counterScore <= 0) {
-        document.getElementById("score").innerHTML = "Score 0"
-    } else {
-        document.getElementById("score").innerHTML = "Score " + counterScore
-        
-    }
-  }
-  if (gettypedChar == getWords) {
-    wordstoType.innerHTML = ""
-    wordsTyped.innerHTML = ""
-    getRandomWords()
-  }
-  */
 })
 // When Tab is pressed, it empty the content of the textArea
 wordsTyped.addEventListener("keydown", function(event) {
