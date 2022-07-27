@@ -41,6 +41,8 @@ function getRandomWords() {
     }
 }
 
+var charTotype = ""
+
 wordsTyped.addEventListener('input', () => {
   // Take the words that we typed
   var gettyped = wordsTyped.innerHTML
@@ -50,13 +52,19 @@ wordsTyped.addEventListener('input', () => {
   var ancestor = document.getElementById("textToReply")
   var descendents = ancestor.getElementsByClassName("letter")
   for (var i = 0; i < descendents.length; i++) {
-    var charTotype = descendents[i].innerHTML
-    if (lastCharTyped == charTotype) {
-      console.log("Correct ")
-      counterChar ++
-    } else {
-      console.log("Incorrect ")
-    }
+    charTotype += descendents[i].innerHTML
+  }
+
+  if (lastCharTyped == charTotype.charAt(counterChar)) {
+    console.log("Correct ")
+    counterChar ++
+    counterScore ++
+    document.getElementById("score").innerHTML = "Score " + counterScore
+  } else {
+    console.log("Incorrect " + charTotype.charAt(counterChar) + " And you typed " + lastCharTyped)
+    counterChar ++
+    counterScore --
+    document.getElementById("score").innerHTML = "Score " + counterScore
   }
 
 })
