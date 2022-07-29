@@ -8,7 +8,7 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;    
-    background-color: #211C2B;
+    background-color: #0B0B45;
     font-family: 'JetBrains Mono';
 }
 
@@ -22,7 +22,7 @@ body {
     position: absolute;
     top: 330px; left: 535px;
     font-size: 45px;
-    color: #9BBB9B;
+    color: #FE019A;
 }
 
 .word {
@@ -33,8 +33,8 @@ body {
     position: absolute;
     top: 400px; left: 535px;
     font-size: 25px;
-    background-color: #211C2B;
-    color: rgba(155, 187, 155, 0.1);
+    background-color: #0B0B45;
+    color: rgba(254, 1, 154, 0.3);
     width: 900px;
     height: 120px;
     border: none;
@@ -47,7 +47,7 @@ body {
     position: absolute;
     top: 400px; left: 535px;
     background-color: transparent;
-    color: #9BBB9B;
+    color: #FE019A;
     border: 0px none #211C2B;
     outline: none;
     width: 900px;
