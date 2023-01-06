@@ -1,17 +1,36 @@
 <!DOCTYPE html>
-<head>
+<html>
+<had>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/cf865644dd.js" crossorigin="anonymous"></script>    
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/main.js" defer></script>
     <title>Typing Game</title>
-</head>
+</had>
 <body>
-    <div id="score">Score 0</div>
-    <div class="container">
-        <div id="textToReply"></div>
-        <div id="inputW" class="inputWords" spellcheck="false" autocomplete="off" contenteditable autofocus></div>
+  <p class="title">Typing Improver<img src="img/keyboard.png" alt=""</p>
+  <!----<div id="score">Score 0</div>-->
+  <div id="textToReply"></div>
+  <div id="inputW" spellcheck="false" autocomplete="off" contenteditable="true" autofocus></div>
+
+  <div id="bottom-options">
+    <div id="amountWords">
+      <p id="amountWordsT">Words</p>
+      <div id="amountWordsV" contenteditable>10</div>
     </div>
+    <div id="theme">
+      <p id="themeT">Theme</p>
+      <i id="toggleIcon" class="fa-solid fa-sun-o" onclick="toggleDarkMode(); changeIcon(this);"></i>
+    </div>
+    <div id="tab">
+      <p id="tabT">Tab</p>
+      <i class="fa-solid fa-rotate-right"></i>
+    </div>
+  </div>
+  <footer id="footer">© 2022 Lvdwig Martin. All Rights Reserved.</footer>
 </body>
 </html>

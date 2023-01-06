@@ -1,73 +1,146 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;    
-    background-color: #0B0B45;
-    font-family: 'JetBrains Mono';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;    
+  background-color: #1D2021;
+  font-family: 'JetBrainsMono NFM';
 }
 
-.container {
-    width: 900px;
-    max-width: 90%;
-    padding: 16px;
+img {
+  width: 100px;
 }
 
-#score {
-    position: absolute;
-    top: 330px; left: 535px;
-    font-size: 45px;
-    color: #FE019A;
+.title {
+  position: absolute;
+  top: 100px;
+  font-size: 2.5em;
+  color: #d79921;
 }
 
 .word {
-    display: inline;
+  display: inline;
 }
 
 #textToReply {
-    position: absolute;
-    top: 400px; left: 535px;
-    font-size: 25px;
-    background-color: #0B0B45;
-    color: rgba(254, 1, 154, 0.3);
-    width: 900px;
-    height: 120px;
-    border: none;
-    resize: none;
-    overflow: hidden;
-    font-family: 'JetBrains Mono';
-}
-
-.inputWords {
-    position: absolute;
-    top: 400px; left: 535px;
-    background-color: transparent;
-    color: #FE019A;
-    border: 0px none #211C2B;
-    outline: none;
-    width: 900px;
-    height: 120px;
-    resize: none;
-    font-size: 25px;
-    overflow: hidden;
-    font-family: 'JetBrains Mono';
-}
-
-.inputWords:focus {
-    border-color: #211C2B;
-}
-
-.correct {
-    font-size: 25px;
-    color: #00ff00;
-}
-
-.incorrect {
+  position: absolute;
+  top: 400px; left: 535px;
   font-size: 25px;
-  color: #ff0000;
+  background-color: transparent;
+  color: rgba(84, 60, 13, 0.8);
+  width: 1000px;
+  height: 500px;
+  border: none;
+  resize: none;
+  overflow: hidden;
+  font-family: 'JetBrainsMono NFM';
+}
+
+#inputW {
+  position: absolute;
+  top: 400px; left: 535px;
+  background-color: transparent;
+  color: #d79921;
+  border: 0px none #211C2B;
+  outline: none;
+  width: 1000px;
+  height: 500px;
+  resize: none;
+  font-size: 25px;
+  overflow: hidden;
+  font-family: 'JetBrainsMono NFM';
+}
+
+#bottom-options {
+  color: #d79921;
+  font-size: 20px;
+  position: absolute;
+  bottom: 200px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+#amountWords {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+}
+
+#amountWordsV {
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid #d79921;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+#theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+}
+
+#theme i {
+  text-align: center;
+  width: 30px;
+  margin-left: 10px;
+}
+
+#tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+
+}
+
+#tab i {
+  text-align: center;
+  width: 30px;
+  margin-left: 10px;
+}
+ 
+.toggle-theme {
+  background-color: rgb(235, 219, 178);
+  color: #1D2021;
+}
+
+.toggle-theme #textToReply {
+  color: rgba(29, 32, 33, 0.6);
+}
+
+.toggle-theme #inputW {
+  color: #1D2021;
+}
+
+.toggle-theme #bottom-options {
+  color: #1D2021;
+}
+
+.toggle-theme #amountWordsV {
+  border: 1px solid #1D2021;
+}
+
+.toggle-theme .title {
+  color: #1D2021;
+}
+
+.toggle-theme #footer {
+  color: #1D2021;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0; 
+    color: #d79921;
 }
