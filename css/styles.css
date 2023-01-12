@@ -9,7 +9,7 @@ body {
   min-height: 100vh;
   margin: 0;    
   background-color: #1D2021;
-  font-family: 'JetBrainsMono NFM';
+  font-family: 'JetBrains Mono', monospace;
 }
 
 img {
@@ -39,7 +39,7 @@ img {
   border: none;
   resize: none;
   overflow: hidden;
-  font-family: 'JetBrainsMono NFM';
+  font-family: 'JetBrains Mono', monospace;
 }
 
 #inputW {
@@ -54,7 +54,7 @@ img {
   resize: none;
   font-size: 25px;
   overflow: hidden;
-  font-family: 'JetBrainsMono NFM';
+  font-family: 'JetBrains Mono', monospace;
 }
 
 #bottom-options {
@@ -75,7 +75,7 @@ img {
 }
 
 #amountWordsV {
-  font-family: 'JetBrainsMono NFM';
+  font-family: 'JetBrains Mono', monospace;
   font-size: 20px;
   text-align: center;
   background-color: transparent;
@@ -149,6 +149,7 @@ img {
     color: #d79921;
 }
 
+/* To disable the increase or decrease arrows on input */
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 

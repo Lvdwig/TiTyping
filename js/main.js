@@ -122,14 +122,14 @@ wordsTyped.addEventListener('input', () => {
     lastCharTyped = " "
   }
   if (lastCharTyped == charTotype.charAt(counterChar)) {
-    console.log("Correct: " + charTotype.charAt(counterChar) + " And you typed " + lastCharTyped)
+    //console.log("Correct: " + charTotype.charAt(counterChar) + " And you typed " + lastCharTyped)
     //console.log("Last char typed " + lastCharTyped)
     counterChar ++
     counterScore ++
     //document.getElementById("score").innerHTML = "Score " + counterScore 
     //wordsTyped.innerText.charAt(wordsTyped.length -1)
   } else {
-    console.log("Incorrect " + charTotype.charAt(counterChar) + " And you typed " + lastCharTyped)
+    //console.log("Incorrect " + charTotype.charAt(counterChar) + " And you typed " + lastCharTyped)
     counterScore --
     //document.getElementById("score").innerHTML = "Score " + counterScore
   }
@@ -141,7 +141,7 @@ function organizingWords() {
   if (mustEnter) {
     for (var i = 0; i < descendents.length; i++) {
       charTotype += descendents[i].innerHTML
-      console.log(descendents[i].innerText)
+      //console.log(descendents[i].innerText)
     }
   }
   mustEnter = false
@@ -152,7 +152,6 @@ function organizingWords() {
 wordsTyped.addEventListener("keydown", function(event) {
   if (event.code === 'Tab') {
     event.preventDefault()
-    console.log()
     scoreDiv.innerHTML = ""
     resetTest.innerHTML = ""
     totalChars = 0
@@ -181,7 +180,7 @@ wordsTyped.addEventListener(("keydown"), function(event) {
 var switchTheme = document.getElementById('toggleIcon')
 switchTheme.addEventListener("click", function handleClick() {
   dark = !dark
-  console.log(dark)
+  //console.log(dark)
 })
 
 // Function to show the results
@@ -223,6 +222,13 @@ function results() {
 function toggleDarkMode() {
   var elementA = document.body
   elementA.classList.toggle("toggle-theme")
+  if (dark) {
+    scoreDiv.style.color = "#1D2021"
+    resetTest.style.color = "#1D2021"
+  } else {
+    scoreDiv.style.color = "#d79921"
+    resetTest.style.color = "#d79921"
+  }
 }
 
 function darkMode() {
