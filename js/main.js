@@ -66,15 +66,14 @@ function getRandomWords(limitWords) {
     // we call the function to pick a Word
     pickWords()
 
-    //console.log(wordPicked)
-    for (var cw = 0; cw < allWords.length; cw++) {
-      if (wordPicked == allWords[cw] ) {
-        wordPicked = ""
-        wordPicked = pickWords()
-      } else {
-        allWords.push(wordPicked)
-      }
+    if (allWords.includes(wordPicked)) {
+      pickWords()
+      console.log("the word is in the array " + wordPicked)
+    } else {
+      allWords.push(wordPicked)
+      console.log(allWords)
     }
+
     if (i < limitWords){
       wordPicked += " "
     }
@@ -100,6 +99,7 @@ function getRandomWords(limitWords) {
 }
 
 // function to pick a words from the array
+//
 function pickWords() {
   // Generate Random number
   var random = Math.floor(Math.random() * randomWords.length)
@@ -160,6 +160,7 @@ wordsTyped.addEventListener("keydown", function(event) {
     charTotype = ""
     wordstoType.innerHTML = ""
     wordsTyped.innerHTML = ""
+    allWords.length = 0 
     getRandomWords(document.getElementById('amountWordsV').value)
     organizingWords()
     mustEnter = true

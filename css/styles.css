@@ -1,3 +1,6 @@
+/* Import for the font */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=swap');
+
 * {
   box-sizing: border-box;
 }
