@@ -68,10 +68,8 @@ function getRandomWords(limitWords) {
 
     if (allWords.includes(wordPicked)) {
       pickWords()
-      console.log("the word is in the array " + wordPicked)
     } else {
       allWords.push(wordPicked)
-      console.log(allWords)
     }
 
     if (i < limitWords){
@@ -147,9 +145,8 @@ function organizingWords() {
   mustEnter = false
 }
 
-
 // When Tab is pressed, it empty the content
-wordsTyped.addEventListener("keydown", function(event) {
+window.addEventListener("keydown", function(event) {
   if (event.code === 'Tab') {
     event.preventDefault()
     scoreDiv.innerHTML = ""
@@ -160,7 +157,9 @@ wordsTyped.addEventListener("keydown", function(event) {
     charTotype = ""
     wordstoType.innerHTML = ""
     wordsTyped.innerHTML = ""
-    allWords.length = 0 
+    allWords.length = 0
+    wordsTyped.setAttribute('contenteditable', 'true')
+    wordsTyped.focus()
     getRandomWords(document.getElementById('amountWordsV').value)
     organizingWords()
     mustEnter = true
@@ -168,7 +167,7 @@ wordsTyped.addEventListener("keydown", function(event) {
 });
 
 // When backspace is pressed, it makes like nothing's happened
-//
+
 wordsTyped.addEventListener(("keydown"), function(event) {
   if (event.code === 'Backspace') {
     lastCharTyped.slice(0, -1)
@@ -191,9 +190,11 @@ function results() {
   var lastWordTyped = wordConverted.slice(wordConverted.lastIndexOf(" ") + 1);
   var lastWordtoType = wordPicked.slice(wordPicked.lastIndexOf(" ") + 1)
   if (lastWordTyped == lastWordtoType) {
+
     // We disable the div to don't allow to continue typing
     wordsTyped.innerHTML = ""
     wordstoType.innerHTML = ""
+    wordsTyped.setAttribute('contenteditable', "false")
     if (dark) {
       darkMode()
     } else {
