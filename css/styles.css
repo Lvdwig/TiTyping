@@ -133,7 +133,7 @@ body {
 
 #footer {
   position: absolute;
-  bottom: 0; 
+  bottom: 10px; 
   color: #fff;
   user-select: none; /* Standard syntax */
 }
