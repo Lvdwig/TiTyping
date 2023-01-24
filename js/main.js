@@ -1,6 +1,6 @@
 var wordPicked = ""
 var totalChars = ""
-var wordsTyped = 1
+let wordsTyped = 0
 
 amountWords.addEventListener('focusout', (event) => {
   totalChars = 0
@@ -9,9 +9,14 @@ amountWords.addEventListener('focusout', (event) => {
   //resetTest.innerHTML = ""
   fillWords(Number(event.target.value))
   //mustEnter = true
-});
+  wordsTyped = 0
+  amountTyped.innerHTML = ""
+}); 
 
 function fillWords(amountWordsV) {
+
+  // To make visible the cursor 
+  cursor.style.display = "block"
 
   if (amountWordsV > 50) {
     amountWordsV = 50
@@ -76,14 +81,19 @@ wordBox.addEventListener('keyup', (event) => {
       if (currentLetter) {
         if (typedChar == currentLetter.innerHTML) {
           addClass(currentLetter, 'correct')
-          removeClass(currentLetter, 'current')
+          removeClass(currentLetter, ' current')
           if (currentLetter.nextSibling) {
             addClass(currentLetter.nextSibling, 'current')
-            wordsTyped += 1
+          } else {
+            let lastWord = words.lastChild
+            let lastLetterOfLastWord = lastWord.lastChild
+            if (lastLetterOfLastWord.className == "letter correct"){
+              getResults()
+            }
           }
         } else {
           addClass(currentLetter, 'incorrect')
-          removeClass(currentLetter, 'current')
+          removeClass(currentLetter, ' current')
           if (currentLetter.nextSibling) {
             addClass(currentLetter.nextSibling, 'current')
           }
@@ -93,16 +103,16 @@ wordBox.addEventListener('keyup', (event) => {
 
     // when you press the Spacebar
     if (typedChar == " ") {
-      console.log(wordsTyped)
       if (currentLetter != currentWord.firstChild) {
-      removeClass(currentWord, 'current')
+      removeClass(currentWord, ' current')
       addClass(currentWord.nextSibling, 'current')
       if (currentLetter) {
-        removeClass(currentLetter, 'current') 
+        removeClass(currentLetter, ' current') 
       }
-      addClass(currentWord.nextSibling.firstChild, 'current')
-      wordsTyped += 1
-      } 
+      addClass(currentWord.nextSibling.firstChild, 'current')   
+      wordsTyped ++
+      amountTyped.innerHTML = wordsTyped + " / " + amountWordsV.value 
+      }
     }
 
     // when press Backspace
@@ -111,45 +121,56 @@ wordBox.addEventListener('keyup', (event) => {
       if (currentLetter && currentLetter == currentWord.firstChild) {
         // make prev word current, last letter current
         if (!currentWord.previousSibling) {
-          return
         } else {
-          removeClass(currentWord, 'current');
-          addClass(currentWord.previousSibling, 'current');
-          removeClass(currentLetter, 'current');
-          addClass(currentWord.previousSibling.lastChild, 'current');
-          removeClass(currentWord.previousSibling.lastChild, 'incorrect');
-          removeClass(currentWord.previousSibling.lastChild, 'correct');
+          wordsTyped --
+          removeClass(currentWord, ' current')
+          addClass(currentWord.previousSibling, 'current')
+          removeClass(currentLetter, ' current')
+          addClass(currentWord.previousSibling.lastChild, 'current')
+          removeClass(currentWord.previousSibling.lastChild, ' incorrect')
+          removeClass(currentWord.previousSibling.lastChild, ' correct')
         }
      } else if (currentLetter && currentLetter != currentWord.firstChild) {
         // move back one letter, invalidate letter
-        removeClass(currentLetter, 'current');
-        addClass(currentLetter.previousSibling, 'current');
-        removeClass(currentLetter.previousSibling, 'incorrect');
-        removeClass(currentLetter.previousSibling, 'correct');
+        removeClass(currentLetter, ' current')
+        addClass(currentLetter.previousSibling, 'current')
+        removeClass(currentLetter.previousSibling, ' incorrect')
+        removeClass(currentLetter.previousSibling, ' correct')
       } else {
-        addClass(currentWord.lastChild, 'current');
-        removeClass(currentWord.lastChild, 'incorrect');
-        removeClass(currentWord.lastChild, 'correct');
+        addClass(currentWord.lastChild, 'current')
+        removeClass(currentWord.lastChild, ' incorrect')
+        removeClass(currentWord.lastChild, ' correct')
       }
     }
   }
 
   // move cursor
-  let nextLetter = document.querySelector('.letter.current');
-  let nextWord = document.querySelector('.word.current');
-  let cursor = document.getElementById('cursor');
-  cursor.style.top = (nextLetter || nextWord).getBoundingClientRect().top + 5 + 'px';
-  cursor.style.left = (nextLetter || nextWord).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px';
+  let nextLetter = document.querySelector('.letter.current')
+  let nextWord = document.querySelector('.word.current')
+  let cursor = document.getElementById('cursor')
+  cursor.style.top = (nextLetter || nextWord).getBoundingClientRect().top + 5 + 'px'
+  cursor.style.left = (nextLetter || nextWord).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px'
 
   // check if the test is finished
 
 })
 
 // when tab is pressed it will reload de game
-document.getElementById('wordBox').addEventListener("keydown", function(event) {
+wordBox.addEventListener("keydown", function(event) {
   if (event.code === 'Tab') {
     event.preventDefault()
     words.innerHTML = ""
+    amountTyped.innerHTML = ""
+    wordsTyped = 0
     fillWords(amountWordsV.value)
   }
 });
+
+function getResults() {
+  amountTyped.innerHTML = ""
+  words.innerHTML = ""
+  cursor.style.display = "none"
+
+  let elements = document.querySelector('.letter.correct')
+  console.log(elements.length)
+}

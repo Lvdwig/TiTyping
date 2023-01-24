@@ -10,7 +10,9 @@ var wordList = ["hello", "how", "first", "second", "keyboard", "lvdwig", "futsal
 "plastic", "curly", "tail", "nose", "mouth", "eyes", "eyebrows", "rainbow", "close", "open", "direction", "station", "gun", "freckles", "breakfast",
 "lunch", "dine", "launch", "rocket", "moon", "planet", "kettle", "glass", "grass", "fork", "push", "pull", "develop", "problem", "big", "around",
 "with", "without", "could", "year", "month", "day", "these", "those", "say", "public", "follow", "get", "leave", "however", "change", "ask", "during",
-"well", "course", "call", "write", "take", "very", "thing", "which", "child", "son", "daughter", "just", "do", "it", "still", "already", "yet",
-"increase", "possible", "impossible", "maybe", "probably", "give", "person", "come", "fact", "same", "show", "movie", "film", "old", "while"]
+"well", "course", "call", "write", "take", "very", "thing", "which", "child", "son", "daughter", "just", "do", "still", "already", "yet",
+"increase", "possible", "impossible", "maybe", "probably", "give", "person", "come", "fact", "same", "show", "movie", "film", "old", "while",
+"purple", "bunny", "animal", "wood", "liquid", "also", "real", "say", "as", "into", "even", "when", "get", "back", "there", "such", "part", "by",
+"of", "then", "can", "against", "life", "live", "another", "would", "he", "she", "through", "head", "most", "we", "right", "left", "middle",
+"between", "seem", "you", "move", "eye", "order", "tell", "early", "later", "people", "nation", "all", "work", "job", "boss", "secretary", "never"]
 
-//export { wordList };

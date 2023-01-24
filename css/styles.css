@@ -25,6 +25,15 @@ body {
   margin-left: 5px;
 }
 
+#amountTyped {
+  position: relative;
+  text-align: left;
+  top: 330px;
+  left: -465px;
+  font-size: 1em;
+  color: #fff;
+}
+
 #wordBox {
   position: absolute;
   top: 40%;
