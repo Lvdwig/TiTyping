@@ -1,6 +1,9 @@
 var wordPicked = ""
 var totalChars = ""
 let wordsTyped = 0
+var counting = true
+var seconds = 0
+var timer = 0
 
 amountWords.addEventListener('focusout', (event) => {
   totalChars = 0
@@ -14,6 +17,8 @@ amountWords.addEventListener('focusout', (event) => {
 }); 
 
 function fillWords(amountWordsV) {
+
+  counting = true
 
   // To make visible the cursor 
   cursor.style.display = "block"
@@ -69,6 +74,7 @@ function removeClass(element, className) {
 }
 
 wordBox.addEventListener('keyup', (event) => {
+
   let typedChar = event.key
   let currentWord = document.querySelector('.word.current')
   let currentLetter = document.querySelector('.letter.current')
@@ -76,6 +82,15 @@ wordBox.addEventListener('keyup', (event) => {
   // When you type a letter
   if (typedChar == 'Tab') {
   } else {
+
+    if (counting) {
+      counting = false
+      timer = setInterval(() => {
+        seconds ++
+        console.log(seconds)
+      }, 1000);
+    }
+
     if (typedChar != " " && typedChar != "Backspace") {
 
       if (currentLetter) {
@@ -150,9 +165,6 @@ wordBox.addEventListener('keyup', (event) => {
   let cursor = document.getElementById('cursor')
   cursor.style.top = (nextLetter || nextWord).getBoundingClientRect().top + 5 + 'px'
   cursor.style.left = (nextLetter || nextWord).getBoundingClientRect()[nextLetter ? 'left' : 'right'] + 'px'
-
-  // check if the test is finished
-
 })
 
 // when tab is pressed it will reload de game
@@ -162,15 +174,110 @@ wordBox.addEventListener("keydown", function(event) {
     words.innerHTML = ""
     amountTyped.innerHTML = ""
     wordsTyped = 0
+    seconds = 0
+    clearInterval(timer)
+    counting = false
     fillWords(amountWordsV.value)
   }
 });
 
-function getResults() {
-  amountTyped.innerHTML = ""
-  words.innerHTML = ""
-  cursor.style.display = "none"
+// On this function we saw how many words we typed correctly
+function getCorrectWords() {
 
-  let elements = document.querySelector('.letter.correct')
-  console.log(elements.length)
+  // we take all the elements with the class word
+  var word = document.getElementsByClassName("word");
+  // we declare a variable to get all the correct words that we type
+  var totalCorrectWordsCount = 0;
+
+  // we do the first loop to get all the span elements for each word class
+  for (var i = 0; i < word.length; i++) {
+    var letters = word[i].getElementsByTagName("span");
+    var correctLetterCount = 0;
+
+    // we do the other loop to iterate in all elements that contains the class correct letter
+    for (var j = 0; j < letters.length; j++) {
+      if (letters[j].classList.contains("letter") && letters[j].classList.contains("correct")) {
+        correctLetterCount++;
+      }
+    }
+
+    // here we count the word as correct if all the childs has the correct letter class
+    if (correctLetterCount === letters.length) {
+      totalCorrectWordsCount++;
+    }
+
+    //console.log("Word " + (i + 1) + " - Correct Letters: " + correctLetterCount);
+  }
+
+  //console.log("Total Correct Words: " + totalCorrectWordsCount);
+
+  // we return the value
+  return totalCorrectWordsCount
+
+}
+
+// In this function we got the Words Per Minute that we typed
+function getWPM() {
+  
+  // We take how many correct words we typed
+  var correctWords = getCorrectWords()
+  //console.log(correctWords)
+  var timeToTypeAllWords = seconds
+  //console.log(timeToTypeAllWords)
+  // We calculate the wpm
+  var wpm = (correctWords / timeToTypeAllWords) * 60
+
+  // we round the result of the formula
+  return wpm = Math.round(wpm)
+}
+
+function showingResults() {
+  
+  // we create the div element which contains all the results
+  var resultsDiv = document.createElement("div")
+  resultsDiv.id = "resultsDiv"
+
+  // we create the wpm element
+  var wpm = document.createElement("p")
+  wpm.classList.add("resultItems")
+  wpm.textContent = "WPM: " + getWPM()
+  resultsDiv.appendChild(wpm)
+
+  // we create the correct words element
+  var correctWords = document.createElement("p")
+  correctWords.classList.add("resultItems")
+  correctWords.textContent = "Correct Words: " + getCorrectWords()
+  resultsDiv.appendChild(correctWords)
+
+  // we create the accuraccy element
+  var accuraccy = document.createElement("p")
+  accuraccy.classList.add("resultItems")
+  //accuraccy.textContent = "Accuraccy on the type: " + accuraccy()
+  //resultsDiv.appendChild(accuraccy)
+
+  // we create the time element
+  var time = document.createElement("p")
+  time.classList.add("resultItems")
+  time.textContent = "Time: " + seconds
+  resultsDiv.appendChild(time)
+
+  // we put the div on our html
+  var articleElement = document.getElementById("wordBox");
+  articleElement.appendChild(resultsDiv)
+
+}
+
+
+// In this function we are getting all the result of the test
+function getResults() {
+  clearInterval(timer)
+  //amountTyped.innerHTML = ""
+  //words.innerHTML = ""
+  //cursor.style.display = "none"
+  amountTyped.innerHTML = ""
+  
+  showingResults()
+
+  //fillWords(amountWordsV.value)  
+  // console.log("It took: " + seconds + " to complete")
 }

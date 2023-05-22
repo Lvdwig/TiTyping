@@ -8,33 +8,75 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/cf865644dd.js" crossorigin="anonymous"></script> 
     <link href="css/styles.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+
     <link rel="icon" href="img/AppIcon.png">
     <script src="js/words.js" defer></script>
     <script src="js/main.js" defer></script>
   </head>
   <body>
-    <p id="title">TiTyping<img src="img/keyboard.png" alt=""</p>
-    <p id="amountTyped"></p>
-    <div id="wordBox" tabindex="0">
-      <div id="words"></div>
-      <div id="cursor"></div>
-    </div> 
-    <div id="settings">
-      <div id="amountWords">
-        <p id="amountWordsT">Words</p>
-        <input id="amountWordsV" type="number" value="25">
+    <article>
+      <p id="title">TiTyping<img src="img/keyboard.png" alt=""</p>
+      <p id="amountTyped"></p>
+      <div id="wordBox" tabindex="0">
+        <div id="words"></div>
+        <div id="cursor"></div>
       </div>
       <!--
-      <div id="theme">
-        <p id="themeT">Theme</p>
-        <i id="toggleIcon" class="fa-solid fa-sun-o"></i>
-      </div>
+      <table id="keyboard">
+        <tr>
+          <th>q</th>
+          <th>w</th>
+          <th>e</th>
+          <th>r</th>
+          <th>t</th>
+          <th>y</th>
+          <th>u</th>
+          <th>i</th>
+          <th>o</th>
+          <th>p</th>
+        </tr>
+        <tr id="sndRow">
+          <th>a</th>
+          <th>s</th>
+          <th>d</th>
+          <th>f</th>
+          <th>g</th>
+          <th>h</th>
+          <th>j</th>
+          <th>k</th>
+          <th>l</th>
+        </tr>
+        <tr>
+          <th>z</th>
+          <th>x</th>
+          <th>c</th>
+          <th>v</th>
+          <th>b</th>
+          <th>n</th>
+          <th>m</th>
+        </tr>
+      </table>
       -->
-      <div id="reset">
-        <p id="resetT">Reset Test with Tab</p>
-        <i class="fa-solid fa-rotate-right"></i>
+      <img src="img/typing.gif" id="typing" width="1000px" height="150px">
+      <div id="settings">
+        <div id="amountWords">
+          <p id="amountWordsT">Words</p>
+          <input id="amountWordsV" type="number" value="5">
+        </div>
+        <!--
+        <div id="theme">
+          <p id="themeT">Theme</p>
+          <i id="toggleIcon" class="fa-solid fa-sun-o"></i>
+        </div>
+        -->
+        <div id="reset">
+          <p id="resetT">Reset Test with Tab</p>
+          <i class="fa-solid fa-rotate-right"></i>
+        </div>
       </div>
-    </div>
+    </article>
     <footer id="footer">© 2022 Lvdwig Martin. All Rights Reserved.</footer>
   </body>
 </html>
