@@ -14,6 +14,7 @@ amountWords.addEventListener('focusout', (event) => {
   //mustEnter = true
   wordsTyped = 0
   amountTyped.innerHTML = ""
+  removeResults()
 }); 
 
 function fillWords(amountWordsV) {
@@ -32,7 +33,7 @@ function fillWords(amountWordsV) {
     // we call the function to pick a Word
     pickWords()
 
-    totalChars += wordPicked.length
+    //console.log(totalChars)
     // create a div to put the word
     var word = document.createElement("div")
     // Put a class to the div
@@ -87,7 +88,6 @@ wordBox.addEventListener('keyup', (event) => {
       counting = false
       timer = setInterval(() => {
         seconds ++
-        console.log(seconds)
       }, 1000);
     }
 
@@ -178,41 +178,33 @@ wordBox.addEventListener("keydown", function(event) {
     clearInterval(timer)
     counting = false
     fillWords(amountWordsV.value)
+    removeResults()
   }
 });
 
 // On this function we saw how many words we typed correctly
 function getCorrectWords() {
 
-  // we take all the elements with the class word
   var word = document.getElementsByClassName("word");
-  // we declare a variable to get all the correct words that we type
-  var totalCorrectWordsCount = 0;
+  var correctWords = 0;
 
-  // we do the first loop to get all the span elements for each word class
   for (var i = 0; i < word.length; i++) {
     var letters = word[i].getElementsByTagName("span");
     var correctLetterCount = 0;
 
-    // we do the other loop to iterate in all elements that contains the class correct letter
     for (var j = 0; j < letters.length; j++) {
       if (letters[j].classList.contains("letter") && letters[j].classList.contains("correct")) {
         correctLetterCount++;
-      }
+      } 
     }
 
-    // here we count the word as correct if all the childs has the correct letter class
     if (correctLetterCount === letters.length) {
-      totalCorrectWordsCount++;
+      correctWords++;
     }
-
-    //console.log("Word " + (i + 1) + " - Correct Letters: " + correctLetterCount);
   }
 
-  //console.log("Total Correct Words: " + totalCorrectWordsCount);
-
-  // we return the value
-  return totalCorrectWordsCount
+  console.log("Total Correct Words: " + correctWords);
+  return correctWords
 
 }
 
@@ -222,13 +214,36 @@ function getWPM() {
   // We take how many correct words we typed
   var correctWords = getCorrectWords()
   //console.log(correctWords)
-  var timeToTypeAllWords = seconds
   //console.log(timeToTypeAllWords)
   // We calculate the wpm
-  var wpm = (correctWords / timeToTypeAllWords) * 60
+  var wpm = (correctWords / seconds) * 60
 
   // we round the result of the formula
   return wpm = Math.round(wpm)
+}
+
+// function to get the accuracy on the test
+function getAccuracy() {
+
+  var word = document.getElementsByClassName("word");
+  var allCorrectLetters = 0;
+
+  for (var i = 0; i < word.length; i++) {
+    var letters = word[i].getElementsByTagName("span");
+
+    for (var j = 0; j < letters.length; j++) {
+      if (letters[j].classList.contains("letter") && letters[j].classList.contains("correct")) {
+        allCorrectLetters++;
+      }
+    }
+  }
+  
+  // we do the formula to get the %
+  var allChars = document.querySelectorAll("span")
+  totalChars = allChars.length
+  var percent = allCorrectLetters / totalChars * 100
+  var percentRounded = Math.round(percent)
+  return percentRounded
 }
 
 function showingResults() {
@@ -249,16 +264,17 @@ function showingResults() {
   correctWords.textContent = "Correct Words: " + getCorrectWords()
   resultsDiv.appendChild(correctWords)
 
-  // we create the accuraccy element
-  var accuraccy = document.createElement("p")
-  accuraccy.classList.add("resultItems")
-  //accuraccy.textContent = "Accuraccy on the type: " + accuraccy()
-  //resultsDiv.appendChild(accuraccy)
+  // we create the accuracy element
+  var accuracy = document.createElement("p")
+  accuracy.classList.add("resultItems")
+  accuracy.textContent = "Accuraccy : " + getAccuracy() + "%"
+  resultsDiv.appendChild(accuracy)
+  console.log(getAccuracy())
 
   // we create the time element
   var time = document.createElement("p")
   time.classList.add("resultItems")
-  time.textContent = "Time: " + seconds
+  time.textContent = "Time: " + seconds + "s"
   resultsDiv.appendChild(time)
 
   // we put the div on our html
@@ -267,6 +283,12 @@ function showingResults() {
 
 }
 
+// we create a function to remove the div that shows the results
+function removeResults() {
+
+  // we get the div to delete the container that shows the results
+  document.getElementById("resultsDiv").remove()
+}
 
 // In this function we are getting all the result of the test
 function getResults() {

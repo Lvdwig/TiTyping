@@ -81,13 +81,14 @@ body {
 
 #cursor{
   display: block;
-  width: 2px;
+  width: 13px;
   height: 25px;
+  border-radius: 2px;
   background: var(--primaryColor);
   position: fixed;
   top: 342px;
   left: 465px;
-  animation: blink .8s infinite;
+  animation: blink 1.5s infinite;
 }
 
 .letter.incorrect {
@@ -109,7 +110,7 @@ body {
 #typing {
   border-radius: 10px;
   position: relative;
-  top: 20px;
+  top: 45px;
 }
 
 #settings {
@@ -173,10 +174,10 @@ body {
   display: flex;
   justify-content: center;
   position: relative;
-  margin-top: 220px;
+  margin-top: 250px;
   bottom: 255px;
-  left: 200px;
-  width: 600px;
+  left: 100px;
+  width: 800px;
   user-select: none;
 }
 
