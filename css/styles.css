@@ -88,7 +88,7 @@ body {
   position: fixed;
   top: 342px;
   left: 465px;
-  animation: blink 1.5s infinite;
+  animation: blink 1s infinite;
 }
 
 .letter.incorrect {

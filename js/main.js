@@ -100,33 +100,34 @@ wordBox.addEventListener('keyup', (event) => {
           if (currentLetter.nextSibling) {
             addClass(currentLetter.nextSibling, 'current')
           } else {
-            let lastWord = words.lastChild
-            let lastLetterOfLastWord = lastWord.lastChild
-            if (lastLetterOfLastWord.className == "letter correct"){
-              getResults()
+              let lastWord = words.lastChild
+              let lastLetterOfLastWord = lastWord.lastChild
+              if (lastLetterOfLastWord.className == "letter correct"){
+                getResults()
+              }
             }
-          }
         } else {
-          addClass(currentLetter, 'incorrect')
-          removeClass(currentLetter, ' current')
-          if (currentLetter.nextSibling) {
-            addClass(currentLetter.nextSibling, 'current')
-          }
+            addClass(currentLetter, 'incorrect')
+            removeClass(currentLetter, ' current')
+            if (currentLetter.nextSibling) {
+              addClass(currentLetter.nextSibling, 'current')
+            }
         } 
       }
     }
 
     // when you press the Spacebar
     if (typedChar == " ") {
-      if (currentLetter != currentWord.firstChild) {
-      removeClass(currentWord, ' current')
-      addClass(currentWord.nextSibling, 'current')
-      if (currentLetter) {
-        removeClass(currentLetter, ' current') 
-      }
-      addClass(currentWord.nextSibling.firstChild, 'current')   
-      wordsTyped ++
-      amountTyped.innerHTML = wordsTyped + " / " + amountWordsV.value 
+      if (currentLetter != currentWord.firstChild && currentWord.nextSibling) {
+        removeClass(currentWord, ' current')
+        addClass(currentWord.nextSibling, 'current')
+        if (currentLetter) {
+          removeClass(currentLetter, ' current') 
+        } else {
+            addClass(currentWord.nextSibling.firstChild, 'current')   
+            wordsTyped ++
+            amountTyped.innerHTML = wordsTyped + " / " + amountWordsV.value 
+        }
       }
     }
 
@@ -137,13 +138,13 @@ wordBox.addEventListener('keyup', (event) => {
         // make prev word current, last letter current
         if (!currentWord.previousSibling) {
         } else {
-          wordsTyped --
-          removeClass(currentWord, ' current')
-          addClass(currentWord.previousSibling, 'current')
-          removeClass(currentLetter, ' current')
-          addClass(currentWord.previousSibling.lastChild, 'current')
-          removeClass(currentWord.previousSibling.lastChild, ' incorrect')
-          removeClass(currentWord.previousSibling.lastChild, ' correct')
+            wordsTyped --
+            removeClass(currentWord, ' current')
+            addClass(currentWord.previousSibling, 'current')
+            removeClass(currentLetter, ' current')
+            addClass(currentWord.previousSibling.lastChild, 'current')
+            removeClass(currentWord.previousSibling.lastChild, ' incorrect')
+            removeClass(currentWord.previousSibling.lastChild, ' correct')
         }
      } else if (currentLetter && currentLetter != currentWord.firstChild) {
         // move back one letter, invalidate letter
@@ -152,9 +153,9 @@ wordBox.addEventListener('keyup', (event) => {
         removeClass(currentLetter.previousSibling, ' incorrect')
         removeClass(currentLetter.previousSibling, ' correct')
       } else {
-        addClass(currentWord.lastChild, 'current')
-        removeClass(currentWord.lastChild, ' incorrect')
-        removeClass(currentWord.lastChild, ' correct')
+          addClass(currentWord.lastChild, 'current')
+          removeClass(currentWord.lastChild, ' incorrect')
+          removeClass(currentWord.lastChild, ' correct')
       }
     }
   }
@@ -287,7 +288,7 @@ function showingResults() {
 function removeResults() {
 
   // we get the div to delete the container that shows the results
-  document.getElementById("resultsDiv").remove()
+  document.getElementById("resultsDiv")?.remove()
 }
 
 // In this function we are getting all the result of the test
