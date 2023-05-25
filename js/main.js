@@ -74,7 +74,7 @@ function removeClass(element, className) {
   element.className = element.className.replace(className, '');
 }
 
-wordBox.addEventListener('keyup', (event) => {
+wordBox.addEventListener('keydown', (event) => {
 
   let typedChar = event.key
   let currentWord = document.querySelector('.word.current')
@@ -122,9 +122,10 @@ wordBox.addEventListener('keyup', (event) => {
         removeClass(currentWord, ' current')
         addClass(currentWord.nextSibling, 'current')
         if (currentLetter) {
-          removeClass(currentLetter, ' current') 
+          removeClass(currentLetter, ' current')
+          addClass(currentWord.nextSibling.firstChild, 'current')
         } else {
-            addClass(currentWord.nextSibling.firstChild, 'current')   
+            addClass(currentWord.nextSibling.firstChild, 'current')
             wordsTyped ++
             amountTyped.innerHTML = wordsTyped + " / " + amountWordsV.value 
         }
